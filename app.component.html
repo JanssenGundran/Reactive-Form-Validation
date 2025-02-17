@@ -1,0 +1,41 @@
+<div class="form-container">
+  <h2 class="form-title">User Registration Form</h2>
+  <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <div class="form-group" [ngClass]="{'has-error': formdata.controls['userName'].invalid && formdata.controls['userName'].touched}">
+      <label for="userName">Username</label>
+      <input type="text" id="userName" formControlName="userName" placeholder="Enter Username">
+      <div class="error-message" *ngIf="formdata.controls['userName'].invalid && formdata.controls['userName'].touched">
+        Username is required.
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': formdata.controls['email'].invalid && formdata.controls['email'].touched}">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" placeholder="Enter Email">
+      <div class="error-message" *ngIf="formdata.controls['email'].invalid && formdata.controls['email'].touched">
+        Enter a valid email.
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': formdata.controls['password'].invalid && formdata.controls['password'].touched}">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" placeholder="Enter Password">
+      <div class="error-message" *ngIf="formdata.controls['password'].invalid && formdata.controls['password'].touched">
+        Password must be at least 6 characters.
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': formdata.controls['age'].invalid && formdata.controls['age'].touched}">
+      <label for="age">Age</label>
+      <input type="number" id="age" formControlName="age" placeholder="Enter Age">
+      <div class="error-message" *ngIf="formdata.controls['age'].invalid && formdata.controls['age'].touched">
+        Age is required.
+      </div>
+    </div>
+    <button type="submit" class="submit-button" [disabled]="formdata.invalid">Submit</button>
+  </form>
+  <p class="form-output">You have entered:</p>
+  <ul class="form-output-list">
+    <li>Username: {{formdata.value.userName}}</li>
+    <li>Email: {{formdata.value.email}}</li>
+    <li>Password: {{formdata.value.password}}</li>
+    <li>Age: {{formdata.value.age}}</li>
+  </ul>
+</div>
